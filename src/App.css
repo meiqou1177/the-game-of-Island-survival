@@ -1,0 +1,116 @@
+/* 词汇生存岛 - 游戏样式 */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body, #root {
+  width: 100%; height: 100%; overflow: hidden;
+  background-color: #1a1a2e; font-family: monospace;
+}
+
+img { image-rendering: pixelated; image-rendering: -moz-crisp-edges; image-rendering: crisp-edges; }
+
+/* 角色方向翻转 */
+.face-right { transform: scaleX(1); }
+.face-left  { transform: scaleX(-1); }
+
+/* 崩坏星穹铁道风格战斗 */
+@keyframes hsr-float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
+}
+.hsr-float { animation: hsr-float 3s ease-in-out infinite; }
+
+@keyframes hsr-damage {
+  0% { transform: translateX(0); opacity: 1; }
+  25% { transform: translateX(-8px); opacity: 0.8; }
+  50% { transform: translateX(6px); opacity: 0.9; }
+  75% { transform: translateX(-3px); opacity: 1; }
+  100% { transform: translateX(0); opacity: 1; }
+}
+.hsr-damage { animation: hsr-damage 0.4s ease-out; }
+
+@keyframes hsr-attack {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(-20px); }
+  60% { transform: translateX(40px); }
+  100% { transform: translateX(0); }
+}
+.hsr-attack { animation: hsr-attack 0.5s ease-out; }
+
+@keyframes hsr-slash {
+  0% { clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); opacity: 0; }
+  30% { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%); opacity: 1; }
+  100% { clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%); opacity: 0; }
+}
+.hsr-slash {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.8) 50%, transparent 60%);
+  animation: hsr-slash 0.3s ease-out;
+  pointer-events: none;
+}
+
+@keyframes hsr-shake {
+  0%, 100% { transform: translate(0); }
+  20% { transform: translate(-6px, 2px); }
+  40% { transform: translate(5px, -3px); }
+  60% { transform: translate(-3px, 1px); }
+  80% { transform: translate(4px, -2px); }
+}
+.hsr-shake { animation: hsr-shake 0.4s ease-out; }
+
+@keyframes hsr-turn-glow {
+  0% { box-shadow: 0 0 0 0 rgba(230, 126, 34, 0.6); }
+  100% { box-shadow: 0 0 0 12px rgba(230, 126, 34, 0); }
+}
+.hsr-turn-glow { animation: hsr-turn-glow 0.6s ease-out; }
+
+@keyframes hsr-enemy-glow {
+  0% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.6); }
+  100% { box-shadow: 0 0 0 12px rgba(231, 76, 60, 0); }
+}
+.hsr-enemy-glow { animation: hsr-enemy-glow 0.6s ease-out; }
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
+}
+.animate-shake { animation: shake 0.5s ease-in-out; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+}
+.animate-float { animation: float linear infinite; }
+
+@keyframes wave {
+  0% { transform: translateX(-3px); }
+  50% { transform: translateX(3px); }
+  100% { transform: translateX(-3px); }
+}
+
+@keyframes slide-up {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.animate-slide-up { animation: slide-up 0.3s ease-out; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #1a1a2e; }
+::-webkit-scrollbar-thumb { background: #4a4a6a; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #6a6a8a; }
+
+::selection { background: rgba(230, 126, 34, 0.3); color: white; }
+button:focus-visible { outline: 2px solid #E67E22; outline-offset: 2px; }
+input:focus { outline: none; }
+* { -webkit-tap-highlight-color: transparent; -webkit-touch-callout: none; }
+
+.pixel-text {
+  font-family: 'Press Start 2P', monospace;
+  text-shadow: 2px 2px 0 #000;
+}
